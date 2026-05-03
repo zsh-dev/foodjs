@@ -91,21 +91,21 @@ class Card {
 
 
 
-const getData = async (url) => {
-    let res = await fetch(url);
-    if (!res.ok) {
-        throw new Error("aaa");
-        
-    }
-    return (await res).json();
-}
+// const getData = async (url) => {
+//     let res = await fetch(url);
+//     if (!res.ok) {
+//         throw new Error("aaa");
 
-getData('http://localhost:3000/menu')
-    .then(res => {
-        res.forEach(({img, altimg, title, descr, price}) => {
-           new Card(img, altimg, title, descr, price, 'menu__item menu__item2').addCard()
-        })
-    })
+//     }
+//     return (await res).json();
+// }
+
+// getData('http://localhost:3000/menu')
+//     .then(res => {
+//         res.forEach(({img, altimg, title, descr, price}) => {
+//            new Card(img, altimg, title, descr, price, 'menu__item menu__item2').addCard()
+//         })
+//     })
 
 
 
@@ -141,4 +141,34 @@ forms.forEach(form => {
         console.log(formBody);
 
     })
+})
+
+const slides = document.querySelectorAll('.offer__slide'),
+    prev = document.querySelector('.offer__slider-prev'),
+    next = document.querySelector('.offer__slider-next');
+
+let slidesIndex = 1;
+showSlides(slidesIndex)
+function showSlides(n) {
+    if (n > slides.length) {
+        slidesIndex = 1;
+    }
+    if (n < 1) {
+        slidesIndex = slides.length;
+    }
+
+    slides.forEach(item => item.style.display = 'none');
+
+    slides[slidesIndex - 1].style.display = 'block';
+
+}
+
+function plusSlides(n) {
+    showSlides(slidesIndex += n);
+}
+prev.addEventListener('click', () => {
+    plusSlides(-1)
+})
+next.addEventListener('click', () => {
+    plusSlides(1)
 })
