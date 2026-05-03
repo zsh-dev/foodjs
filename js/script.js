@@ -145,16 +145,33 @@ forms.forEach(form => {
 
 const slides = document.querySelectorAll('.offer__slide'),
     prev = document.querySelector('.offer__slider-prev'),
-    next = document.querySelector('.offer__slider-next');
+    next = document.querySelector('.offer__slider-next'),
+    total = document.querySelector('#total'),
+    current = document.querySelector('#current');
+
+
 
 let slidesIndex = 1;
 showSlides(slidesIndex)
+
+if (slides.length < 10) {
+    total.textContent = `0${slides.length}`
+} else {
+    total.textContent = slides.length;
+}
+
+
 function showSlides(n) {
     if (n > slides.length) {
         slidesIndex = 1;
     }
     if (n < 1) {
         slidesIndex = slides.length;
+    }
+    if (slides.length < 10) {
+        current.textContent = `0${slidesIndex}`
+    } else {
+        current.textContent = slidesIndex;
     }
 
     slides.forEach(item => item.style.display = 'none');
