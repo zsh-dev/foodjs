@@ -147,45 +147,47 @@ const slides = document.querySelectorAll('.offer__slide'),
     prev = document.querySelector('.offer__slider-prev'),
     next = document.querySelector('.offer__slider-next'),
     total = document.querySelector('#total'),
-    current = document.querySelector('#current');
+    current = document.querySelector('#current'),
+    slidesWrapper = document.querySelector('.offer__slider-wrapper'),
+    slidesField = document.querySelector('.offer__slider-inner');
 
 
 
-let slidesIndex = 1;
-showSlides(slidesIndex)
+// let slidesIndex = 1;
+// showSlides(slidesIndex)
 
-if (slides.length < 10) {
-    total.textContent = `0${slides.length}`
-} else {
-    total.textContent = slides.length;
-}
+// if (slides.length < 10) {
+//     total.textContent = `0${slides.length}`
+// } else {
+//     total.textContent = slides.length;
+// }
 
 
-function showSlides(n) {
-    if (n > slides.length) {
-        slidesIndex = 1;
-    }
-    if (n < 1) {
-        slidesIndex = slides.length;
-    }
-    if (slides.length < 10) {
-        current.textContent = `0${slidesIndex}`
-    } else {
-        current.textContent = slidesIndex;
-    }
+// function showSlides(n) {
+//     if (n > slides.length) {
+//         slidesIndex = 1;
+//     }
+//     if (n < 1) {
+//         slidesIndex = slides.length;
+//     }
+//     if (slides.length < 10) {
+//         current.textContent = `0${slidesIndex}`
+//     } else {
+//         current.textContent = slidesIndex;
+//     }
 
-    slides.forEach(item => item.style.display = 'none');
+//     slides.forEach(item => item.style.display = 'none');
 
-    slides[slidesIndex - 1].style.display = 'block';
+//     slides[slidesIndex - 1].style.display = 'block';
 
-}
+// }
 
-function plusSlides(n) {
-    showSlides(slidesIndex += n);
-}
-prev.addEventListener('click', () => {
-    plusSlides(-1)
-})
-next.addEventListener('click', () => {
-    plusSlides(1)
-})
+// function plusSlides(n) {
+//     showSlides(slidesIndex += n);
+// }
+// prev.addEventListener('click', () => {
+//     plusSlides(-1)
+// })
+// next.addEventListener('click', () => {
+//     plusSlides(1)
+// }) 
